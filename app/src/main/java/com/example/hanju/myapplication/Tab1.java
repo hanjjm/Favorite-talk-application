@@ -1,12 +1,17 @@
 package com.example.hanju.myapplication;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -64,7 +69,10 @@ public class Tab1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab1, container, false);
+        View wholeview = getView();
+        ListUpdate(wholeview);
+        return wholeview;
+        // return inflater.inflate(R.layout.fragment_tab1, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -90,6 +98,29 @@ public class Tab1 extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    public View ListUpdate(View wholeview){
+        ListView l1 = wholeview.findViewById(R.id.listview);
+        String[] projection = {ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME, ContactsContract.CommonDataKinds.Phone.NUMBER};
+        Cursor cursor = getActivity().getContentResolver().query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,projection,null,null, null);
+
+        ArrayList<String> nameList = new ArrayList<>();
+        ArrayList<String> phoneNumList = new ArrayList<>();
+
+        while(cursor.moveToNext()) {
+            String name = cursor.getString(0);
+            String phoneNum = cursor.getString(1);
+            nameList.add(name);
+            phoneNumList.add(phoneNum);
+
+        }
+        cursor.close();
+        ListAdapter adapter = new ListAdapter (getContext(),R.layout.item_list, nameList, phoneNumList);
+        l1.setAdapter(adapter);
+
+        return wholeview;
+    }
+
 
     /**
      * This interface must be implemented by activities that contain this
