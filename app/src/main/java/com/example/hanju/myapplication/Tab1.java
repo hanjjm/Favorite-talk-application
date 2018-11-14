@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -69,10 +70,18 @@ public class Tab1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View wholeview = getView();
-        ListUpdate(wholeview);
-        return wholeview;
-        // return inflater.inflate(R.layout.fragment_tab1, container, false);
+        View view = inflater.inflate(R.layout.fragment_tab1, container, false);
+
+        Button btn = (Button) view.findViewById(R.id.button);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v){
+                View wholeview = getView();
+                ListUpdate(wholeview);
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
