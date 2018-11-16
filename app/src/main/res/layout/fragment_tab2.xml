@@ -6,12 +6,28 @@
     tools:context=".Tab2">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="TAB2"
+    <GridView
+        android:id="@+id/gridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:choiceMode="singleChoice"
+        android:columnWidth="100dp"
+        android:numColumns="auto_fit"
+        android:rowHeight="100dp"
+        android:stretchMode="columnWidth" />
+
+    <Button
+        android:id="@+id/tab2btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="13dp"
+        android:background="@color/colorPrimaryDark"
         android:textSize="30dp"
-        />
+        android:visibility="visible" />
 
 </RelativeLayout>

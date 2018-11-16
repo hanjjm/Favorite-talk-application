@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 
+
 import java.util.ArrayList;
 
 
@@ -121,10 +122,9 @@ public class Tab1 extends Fragment {
             String phoneNum = cursor.getString(1);
             nameList.add(name);
             phoneNumList.add(phoneNum);
-
         }
         cursor.close();
-        ListAdapter adapter = new ListAdapter (getContext(),R.layout.item_list, nameList, phoneNumList);
+        ListAdapter adapter = new ListAdapter(getContext(),R.layout.item_list, nameList, phoneNumList);
         l1.setAdapter(adapter);
 
         return wholeview;

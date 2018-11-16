@@ -1,13 +1,18 @@
 package com.example.hanju.myapplication;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.GridView;
 
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,6 +22,7 @@ import android.view.ViewGroup;
  * Use the {@link Tab2#newInstance} factory method to
  * create an instance of this fragment.
  */
+
 public class Tab2 extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +38,9 @@ public class Tab2 extends Fragment {
     public Tab2() {
         // Required empty public constructor
     }
+
+
+    private static final int REQUEST_TAKE_ALBUM = 3333;
 
     /**
      * Use this factory method to create a new instance of
@@ -64,9 +73,18 @@ public class Tab2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_tab2, container, false);
-    }
+        View view = inflater.inflate(R.layout.fragment_tab2, container, false);
 
+        Button btn = (Button) view.findViewById(R.id.tab2btn);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick (View v){
+                GridView gridView = getView().findViewById(R.id.gridView);
+                gridUpdate( MediaStore.Images.Media.EXTERNAL_CONTENT_URI, gridView);
+            }
+        });
+        return view;
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -104,5 +122,22 @@ public class Tab2 extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public ArrayList<String> getPathList( Uri uri, String[] projection){
+        ArrayList<String> pathList = new ArrayList<>();
+        Cursor cursor = getActivity().getContentResolver().query(uri, projection, null, null, null);
+        if(cursor.moveToFirst()){
+            do{
+                pathList.add(cursor.getString(0));
+            }while(cursor.moveToNext());
+        }
+        return pathList;
+    }
+
+    public void gridUpdate(Uri uri, GridView view){
+        ArrayList<String> pathList = getPathList(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new String[] {MediaStore.Images.Media.DATA});
+        GridAdapter gridadapter = new GridAdapter(getContext(), pathList);
+        view.setAdapter(gridadapter);
     }
 }
