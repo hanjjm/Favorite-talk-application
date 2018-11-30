@@ -51,11 +51,9 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
             }
         });
-/*
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        mContext = this;*/
-/*
+
+        mContext = this;
+
         if( (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED)
                 || (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED))
         {
@@ -64,8 +62,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
 
         mDbOpenHelper = new DBOpenHelper(this);
         mDbOpenHelper.open();
-        mDbOpenHelper.create();*/
-
+        mDbOpenHelper.create();
     }
 
     private void Permissions() {

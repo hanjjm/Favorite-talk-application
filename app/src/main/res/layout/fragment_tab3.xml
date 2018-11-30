@@ -16,15 +16,14 @@
         android:choiceMode="singleChoice"></ListView>
 
     <Button
-        android:id="@+id/favUpdateButton"
+        android:id="@+id/favoritebutton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="12dp"
         android:layout_marginRight="13dp"
-        android:background="@color/colorPrimary"
-        android:text="+"
+        android:background="@color/colorPrimaryDark"
         android:textSize="30dp"
         android:visibility="visible" />
 

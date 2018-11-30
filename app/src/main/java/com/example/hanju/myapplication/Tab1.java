@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 
 import java.util.ArrayList;
@@ -77,6 +78,7 @@ public class Tab1 extends Fragment {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
+                Toast.makeText(getContext(), "~~~~~~~", Toast.LENGTH_SHORT);
                 View wholeview = getView();
                 ListUpdate(wholeview);
             }

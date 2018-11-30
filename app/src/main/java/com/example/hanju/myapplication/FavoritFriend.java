@@ -68,8 +68,6 @@ public class FavoritFriend extends AppCompatActivity {
         ArrayList<String> phoneNumList = new ArrayList<>();
 
         if ( mDbOpenHelper.mDB != null) {
-            //CONTACTS.execSQL("CREATE TABLE IF NOT EXISTS people (Name TEXT, Phonenumber TEXT, Favor INTEGER)");
-            // 쿼리문으로 데이터 불러옴
             Cursor cursor = mDbOpenHelper.mDB.rawQuery("SELECT * FROM people", null);
             while (cursor.moveToNext()) {
                 String name = cursor.getString(1);
