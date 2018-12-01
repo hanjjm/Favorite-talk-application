@@ -30,7 +30,7 @@ public class ClickAdapter extends BaseAdapter {
         public TextView name;
         public TextView phoneNum;
         public Button button;
-        public ImageView heart;
+     //  public ImageView heart;
         public boolean clickedOddTimes;
     }
     public Object getItem(int position) {

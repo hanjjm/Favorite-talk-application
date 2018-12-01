@@ -41,4 +41,31 @@ tools:context=".FavoritFriend">
         android:textColor="@color/colorPrimary"
         android:textSize="18dp" />
 
+    <Button
+        android:id="@+id/favoriteaddbtn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="13dp"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:visibility="visible" />
+
+    <Button
+        android:id="@+id/exitbtn"
+        android:text="X"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="457dp"
+        android:background="@color/colorPrimaryDark"
+        android:textSize="30dp"
+        android:visibility="visible" />
+
+
+
 </RelativeLayout>

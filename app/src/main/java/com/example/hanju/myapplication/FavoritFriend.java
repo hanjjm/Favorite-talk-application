@@ -25,11 +25,11 @@ public class FavoritFriend extends AppCompatActivity {
         setContentView(R.layout.activity_favorit_friend);
         context = this;
         ListView listview = findViewById(R.id.dblist);
+/*
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(context, "An item of the ListView is clicked.", Toast.LENGTH_LONG).show();
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ClickAdapter.ViewHolder holder = (ClickAdapter.ViewHolder) view.getTag();
                 if(holder.clickedOddTimes){
                     holder.clickedOddTimes = false;
@@ -50,13 +50,22 @@ public class FavoritFriend extends AppCompatActivity {
                     Log.d("ViewHolder phoneNum",  phoneNum);
                     int FAVOR = cursor.getInt(3);
                     if(Objects.equals(PHONE, phoneNum)){
-                        Log.d( "", "DETECTED!!!");
                         mDbOpenHelper.updateColumn(ID,NAME,PHONE,1-FAVOR);
                     }
                 }
 
             }
         });
+*/
+
+        Button exitbtn = (Button) findViewById(R.id.exitbtn);
+        exitbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
 
         ListUpdate(listview);
@@ -69,6 +78,7 @@ public class FavoritFriend extends AppCompatActivity {
 
         if ( mDbOpenHelper.mDB != null) {
             Cursor cursor = mDbOpenHelper.mDB.rawQuery("SELECT * FROM people", null);
+            Toast.makeText(this, "왜 안뜰까요~~~", Toast.LENGTH_SHORT);
             while (cursor.moveToNext()) {
                 String name = cursor.getString(1);
                 String phoneNum = cursor.getString(2);
@@ -79,7 +89,7 @@ public class FavoritFriend extends AppCompatActivity {
                 }
             }
         }
-        ClickAdapter adapter = new ClickAdapter(this,R.layout.activity_favorit_friend, nameList, phoneNumList);
+        ClickAdapter adapter = new ClickAdapter(this,R.layout.item_list2, nameList, phoneNumList);
         l1.setAdapter(adapter);
     }
 }
