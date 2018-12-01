@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 
 import java.util.ArrayList;
+import static com.example.hanju.myapplication.MainActivity.mDbOpenHelper;
 
 
 /**
@@ -124,6 +125,7 @@ public class Tab1 extends Fragment {
             String phoneNum = cursor.getString(1);
             nameList.add(name);
             phoneNumList.add(phoneNum);
+            mDbOpenHelper.insertColumn(name, phoneNum, 0);
         }
         cursor.close();
         ListAdapter adapter = new ListAdapter(getContext(),R.layout.item_list, nameList, phoneNumList);

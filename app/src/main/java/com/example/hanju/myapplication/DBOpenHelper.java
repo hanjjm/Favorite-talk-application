@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class DBOpenHelper {
     private static final String DATABASE_NAME = "ContactData.db";
@@ -43,6 +44,7 @@ public class DBOpenHelper {
 
     public void create(){
         mDBHelper.onCreate(mDB);
+        MainActivity.a = 10;
     }
 
     public void close(){

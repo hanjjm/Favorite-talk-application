@@ -13,12 +13,14 @@ import android.widget.Toast;
 import android.support.design.widget.TabLayout.TabLayoutOnPageChangeListener;
 import android.support.design.widget.TabLayout;
 
+import static java.lang.String.valueOf;
+
 public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentInteractionListener, Tab2.OnFragmentInteractionListener, Tab3.OnFragmentInteractionListener{
     public static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
     public static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 2;
     private static Context mContext;
     public static DBOpenHelper mDbOpenHelper;
-
+public static int a = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +61,11 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         {
             Permissions();
         }
-
+        //Toast.makeText(getApplicationContext(), "TEST2", Toast.LENGTH_LONG).show();
         mDbOpenHelper = new DBOpenHelper(this);
         mDbOpenHelper.open();
         mDbOpenHelper.create();
+        Toast.makeText(getApplicationContext(), valueOf(a).toString(), Toast.LENGTH_LONG).show();
     }
 
     private void Permissions() {
@@ -77,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements Tab1.OnFragmentIn
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 MY_PERMISSIONS_REQUEST_READ_CONTACTS);
+        Toast.makeText(getApplicationContext(), "TEST1", Toast.LENGTH_LONG).show();
     }
 
     @Override

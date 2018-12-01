@@ -8,7 +8,7 @@
     >
 
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/name2"
         android:layout_width="138dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
@@ -22,7 +22,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/phoneNum"
+        android:id="@+id/phoneNum2"
         android:layout_width="145dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
@@ -32,5 +32,13 @@
         android:textColor="@color/colorPrimary"
         android:textSize="18dp" />
 
+    <ImageView
+        android:id="@+id/heart"
+        android:src="@drawable/ic_launcher_foreground"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="21dp" />
 
 </RelativeLayout>
