@@ -27,12 +27,6 @@ public class FavoritFriend extends AppCompatActivity {
         context = this;
         ListView listview = findViewById(R.id.dblist);
 
-
-
-
-
-/*
-
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -62,14 +56,16 @@ public class FavoritFriend extends AppCompatActivity {
 
             }
         });
-*/
+
 
         Button btn = (Button) findViewById(R.id.favoriteaddbtn);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
                 Toast.makeText(getApplicationContext(), "왜 안뜰까요~~~", Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
             }
         });
 

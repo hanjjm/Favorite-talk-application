@@ -9,11 +9,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import static com.example.hanju.myapplication.MainActivity.mDbOpenHelper;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -67,12 +70,38 @@ public class Tab3 extends Fragment {
     }
 
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_tab3, container, false);
-         Toast.makeText(getContext(), "tab3 시작", Toast.LENGTH_SHORT);
+        final ListView listview = view.findViewById(R.id.favoritelist);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                /// deleted from favorite list
+                Toast.makeText(getContext(), "A person deleted from the favorite list", Toast.LENGTH_LONG).show();
+                Tab3ListAdapter.ViewHolder holder = (Tab3ListAdapter.ViewHolder) view.getTag();
+
+                //database update
+                String phoneNum = (String) holder.phoneNum.getText();
+                Cursor cursor = mDbOpenHelper.mDB.rawQuery("SELECT * FROM people", null);
+                while (cursor.moveToNext()) {
+                    int ID = cursor.getInt(0);
+                    String NAME = cursor.getString(1);
+                    String PHONE =  cursor.getString(2);
+
+                    int FAVOR = cursor.getInt(3);
+                    if(PHONE.equals(phoneNum)){
+                        mDbOpenHelper.updateColumn(ID,NAME,PHONE,0);
+                    }
+                }
+                ListUpdate(listview);
+            }
+        });
+        ListUpdate(listview);
+
         Button btn = (Button) view.findViewById(R.id.favoritebutton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +109,15 @@ public class Tab3 extends Fragment {
                 Toast.makeText(getContext(), "~~~~~~~", Toast.LENGTH_SHORT);
                 Intent i = new Intent(getContext(), FavoritFriend.class);
                 startActivity(i);
+            }
+        });
+
+        Button updatebtn = (Button) view.findViewById(R.id.updatebtn);
+        updatebtn.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                ListUpdate(listview);
             }
         });
         return view;
@@ -109,7 +147,35 @@ public class Tab3 extends Fragment {
         mListener = null;
     }
 
+    public void ListUpdate(ListView l1){
 
+        ArrayList<String> nameList = new ArrayList<>();
+        ArrayList<String> phoneNumList = new ArrayList<>();
+
+        if (  mDbOpenHelper.mDB != null) {
+            //CONTACTS.execSQL("CREATE TABLE IF NOT EXISTS people (Name TEXT, Phonenumber TEXT, Favor INTEGER)");
+            // 쿼리문으로 데이터 불러옴
+            Cursor cursor = mDbOpenHelper.mDB.rawQuery("SELECT * FROM people", null);
+            while (cursor.moveToNext()) {
+                String name = cursor.getString(1);
+                String phoneNum = cursor.getString(2);
+                int favor = cursor.getInt(3);
+                if(favor == 1){
+                    nameList.add(name);
+                    phoneNumList.add(phoneNum);
+                }
+            }
+        }
+        Tab3ListAdapter adapter = new Tab3ListAdapter (getContext(),R.layout.item_list, nameList, phoneNumList);
+        l1.setAdapter(adapter);
+    }
+
+    @Override
+    public void onActivityResult(int req, int res, Intent data) {
+        super.onActivityResult(req, res, data);
+        ListView listview = getActivity().findViewById(R.id.favoritelist);
+        ListUpdate(listview);
+    }
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
