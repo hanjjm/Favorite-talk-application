@@ -19,27 +19,47 @@ tools:context=".FavoritFriend">
         android:id="@+id/favoriteaddbtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="12dp"
-        android:layout_marginRight="13dp"
-        android:background="@color/colorPrimaryDark"
+
+        android:background="@android:color/transparent"
         android:textSize="30dp"
         android:visibility="visible" />
 
     <Button
         android:id="@+id/exitbtn"
-        android:text="X"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="52dp"
+        android:layout_height="51dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="457dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_marginRight="91dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/transparent"
         android:textSize="30dp"
         android:visibility="visible" />
+    <ImageView
+        android:id="@+id/update"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="13dp"
+        android:src="@drawable/heart" />
 
+    <ImageView
+        android:id="@+id/exit"
+        android:layout_width="52dp"
+        android:layout_height="51dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
 
+        android:layout_marginRight="91dp"
+        android:layout_marginBottom="18dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/exit" />
 
 </RelativeLayout>

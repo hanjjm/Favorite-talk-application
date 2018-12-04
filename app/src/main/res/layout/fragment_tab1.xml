@@ -12,7 +12,18 @@
         android:layout_centerInParent="true"
         android:textSize="30dp"
         />
+    <ImageView
+        android:id="@+id/tab1update"
+        android:layout_width="66dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/button"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
 
+        android:background="@android:color/transparent"
+        android:layout_marginTop="-18dp"
+        android:layout_marginRight="13dp"
+        android:src="@drawable/update" />
     <Button
         android:id="@+id/button"
         android:layout_width="60dp"
@@ -21,9 +32,12 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="12dp"
         android:layout_marginRight="13dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/transparent"
         android:textSize="30dp"
         android:visibility="visible" />
+
+
+
 
     <ListView
         android:id="@+id/listview"

@@ -18,6 +18,19 @@
         android:rowHeight="100dp"
         android:stretchMode="columnWidth" />
 
+
+    <ImageView
+        android:id="@+id/tab2update"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+
+        android:background="@android:color/transparent"
+        android:layout_marginRight="13dp"
+        android:src="@drawable/update" />
+
     <Button
         android:id="@+id/tab2btn"
         android:layout_width="60dp"
@@ -26,8 +39,10 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="12dp"
         android:layout_marginRight="13dp"
-        android:background="@color/colorPrimaryDark"
+
+        android:background="@android:color/transparent"
         android:textSize="30dp"
         android:visibility="visible" />
+
 
 </RelativeLayout>

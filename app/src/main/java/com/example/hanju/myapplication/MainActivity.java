@@ -2,6 +2,7 @@ package com.example.hanju.myapplication;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,13 +25,17 @@ public static int a = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = new Intent(this, Loading.class);
+        startActivity(intent);
+
+
         setContentView(R.layout.activity_main);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("TAB 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("TAB 2"));
-        tabLayout.addTab(tabLayout.newTab().setText("TAB 3"));
-
+        tabLayout.addTab(tabLayout.newTab().setText("전화번호부"));
+        tabLayout.addTab(tabLayout.newTab().setText("앨범"));
+        tabLayout.addTab(tabLayout.newTab().setText("즐겨찾기"));
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final ChangingTab adapter = new ChangingTab(getSupportFragmentManager(), tabLayout.getTabCount());;
         viewPager.setAdapter(adapter);

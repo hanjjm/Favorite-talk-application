@@ -23,7 +23,7 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="12dp"
         android:layout_marginRight="13dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="@android:color/transparent"
         android:textSize="30dp"
         android:visibility="visible" />
 
@@ -35,9 +35,33 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="87dp"
         android:layout_marginBottom="14dp"
-        android:background="@color/colorPrimaryDark"
         android:textSize="30dp"
+        android:background="@android:color/transparent"
         android:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/tab3update"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="13dp"
+        android:src="@drawable/favoriteheart" />
+
+    <ImageView
+        android:id="@+id/tab3heart"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentRight="true"
+
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="87dp"
+        android:layout_marginBottom="14dp"
+        android:src="@drawable/update" />
 
 
 </RelativeLayout>

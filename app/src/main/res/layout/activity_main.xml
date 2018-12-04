@@ -11,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gold"
+        android:background="@color/cornsilk"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hanju Talk"
-            android:textColor="@color/darkslategray"
+            android:textColor="@color/sienna"
             android:textSize="25dp"
             android:textStyle="bold" />
 
@@ -30,7 +30,7 @@
         android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gold"
+        android:background="@color/cornsilk"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
@@ -38,6 +38,7 @@
 
 
     <android.support.v4.view.ViewPager
+        android:background="@color/beige"
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
