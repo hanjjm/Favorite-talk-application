@@ -166,7 +166,7 @@ public class Tab3 extends Fragment {
                 }
             }
         }
-        Tab3ListAdapter adapter = new Tab3ListAdapter (getContext(),R.layout.item_list, nameList, phoneNumList);
+        Tab3ListAdapter adapter = new Tab3ListAdapter (getContext(),R.layout.item_list3, nameList, phoneNumList);
         l1.setAdapter(adapter);
     }
 

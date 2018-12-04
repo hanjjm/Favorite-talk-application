@@ -32,6 +32,14 @@
         android:textColor="@color/colorPrimary"
         android:textSize="18dp" />
 
+    <ImageView
+        android:id="@+id/tab3star"
+        android:src="@drawable/star"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="21dp" />
 
 
 </RelativeLayout>

@@ -31,7 +31,7 @@ public class Tab3ListAdapter extends BaseAdapter {
         public TextView name;
         public TextView phoneNum;
         public Button button;
-        public ImageView heart;
+        public ImageView star;
     }
     public Object getItem(int position) {
         return  nameList.get(position);
@@ -54,8 +54,8 @@ public class Tab3ListAdapter extends BaseAdapter {
             viewHolder.name = (TextView) rowView.findViewById(R.id.name);
             viewHolder.phoneNum = (TextView) rowView.findViewById(R.id.phoneNum);
     //        viewHolder.button= (Button) rowView.findViewById(R.id.bt);
-       //     viewHolder.heart = (ImageView) rowView.findViewById(R.id.heart);
-       //     viewHolder.heart.setImageResource(R.drawable.close);
+       //     viewHolder.star = (ImageView) rowView.findViewById(R.id.star);
+        //    viewHolder.star.setImageResource(R.drawable.star);
             rowView.setTag(viewHolder);
         }
         // Set text to each TextView of ListView item

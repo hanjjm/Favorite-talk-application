@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -26,15 +27,18 @@ public class FavoritFriend extends AppCompatActivity {
         setContentView(R.layout.activity_favorit_friend);
         context = this;
         ListView listview = findViewById(R.id.dblist);
-
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ClickAdapter.ViewHolder holder = (ClickAdapter.ViewHolder) view.getTag();
                 if(holder.clickedOddTimes){
+
+                    holder.star.setImageResource(R.drawable.star2);
                     holder.clickedOddTimes = false;
                 }
                 else{
+
+                    holder.star.setImageResource(R.drawable.star);
                     holder.clickedOddTimes = true;
                     String name = (String) holder.name.getText();
                     String phoneNum = (String) holder.phoneNum.getText();
@@ -46,8 +50,6 @@ public class FavoritFriend extends AppCompatActivity {
                     int ID = cursor.getInt(0);
                     String NAME = cursor.getString(1);
                     String PHONE =  cursor.getString(2);
-                    Log.d("database phoneNum",  PHONE);
-                    Log.d("ViewHolder phoneNum",  phoneNum);
                     int FAVOR = cursor.getInt(3);
                     if(Objects.equals(PHONE, phoneNum)){
                         mDbOpenHelper.updateColumn(ID,NAME,PHONE,1-FAVOR);

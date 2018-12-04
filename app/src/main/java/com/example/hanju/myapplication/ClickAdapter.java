@@ -29,7 +29,7 @@ public class ClickAdapter extends BaseAdapter {
         public TextView name;
         public TextView phoneNum;
         public Button button;
-        public ImageView heart;
+        public ImageView star;
         public boolean clickedOddTimes;
     }
     public Object getItem(int position) {
@@ -51,6 +51,8 @@ public class ClickAdapter extends BaseAdapter {
             ViewHolder viewHolder = new ViewHolder();
             viewHolder.name = (TextView) rowView.findViewById(R.id.name2);
             viewHolder.phoneNum = (TextView) rowView.findViewById(R.id.phoneNum2);
+            viewHolder.star = (ImageView) rowView.findViewById(R.id.star);
+            viewHolder.star.setImageResource(R.drawable.star2);
             rowView.setTag(viewHolder);
         }
         ViewHolder holder = (ViewHolder) rowView.getTag();
