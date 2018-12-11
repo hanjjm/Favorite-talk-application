@@ -33,9 +33,9 @@ public static int a = 2;
         setContentView(R.layout.activity_main);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("전화번호부"));
-        tabLayout.addTab(tabLayout.newTab().setText("앨범"));
-        tabLayout.addTab(tabLayout.newTab().setText("즐겨찾기"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.phonebook));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.gallery));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.star));
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
         final ChangingTab adapter = new ChangingTab(getSupportFragmentManager(), tabLayout.getTabCount());;
         viewPager.setAdapter(adapter);
@@ -70,22 +70,23 @@ public static int a = 2;
         mDbOpenHelper = new DBOpenHelper(this);
         mDbOpenHelper.open();
         mDbOpenHelper.create();
-        Toast.makeText(getApplicationContext(), valueOf(a).toString(), Toast.LENGTH_LONG).show();
+       // Toast.makeText(getApplicationContext(), valueOf(a).toString(), Toast.LENGTH_LONG).show();
     }
 
     private void Permissions() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.READ_CONTACTS)) {
-            Toast.makeText(this, "Need to access contacts", Toast.LENGTH_SHORT).show();
+          //
+            //  Toast.makeText(this, "Need to access contacts", Toast.LENGTH_SHORT).show();
         }
         if(ActivityCompat.shouldShowRequestPermissionRationale(this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)){
-            Toast.makeText(this, "Need to access External Storage", Toast.LENGTH_SHORT).show();
+        //    Toast.makeText(this, "Need to access External Storage", Toast.LENGTH_SHORT).show();
         }
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.READ_CONTACTS, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
                 MY_PERMISSIONS_REQUEST_READ_CONTACTS);
-        Toast.makeText(getApplicationContext(), "TEST1", Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getApplicationContext(), "TEST1", Toast.LENGTH_LONG).show();
     }
 
     @Override

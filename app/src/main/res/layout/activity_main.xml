@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hanju Talk"
+            android:text="Favorite Talk"
             android:textColor="@color/sienna"
             android:textSize="25dp"
             android:textStyle="bold" />

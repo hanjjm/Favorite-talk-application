@@ -79,7 +79,7 @@ public class Tab1 extends Fragment {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
-                Toast.makeText(getContext(), "~~~~~~~", Toast.LENGTH_SHORT);
+            //    Toast.makeText(getContext(), "~~~~~~~", Toast.LENGTH_SHORT);
                 View wholeview = getView();
                 ListUpdate(wholeview);
             }

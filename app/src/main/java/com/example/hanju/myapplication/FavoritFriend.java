@@ -64,7 +64,7 @@ public class FavoritFriend extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick (View v){
-                Toast.makeText(getApplicationContext(), "왜 안뜰까요~~~", Toast.LENGTH_LONG).show();
+            //    Toast.makeText(getApplicationContext(), "왜 안뜰까요~~~", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent();
                 setResult(RESULT_OK, intent);
                 finish();
@@ -90,7 +90,8 @@ public class FavoritFriend extends AppCompatActivity {
         ArrayList<String> phoneNumList = new ArrayList<>();
 
         //if ( mDbOpenHelper.mDB == null){
-            Toast.makeText(this, "왜 1123122~13243~~", Toast.LENGTH_SHORT);
+       //
+        //     Toast.makeText(this, "왜 1123122~13243~~", Toast.LENGTH_SHORT);
         //}
 int aa = 0;
        // if ( mDbOpenHelper.mDB != null) {
@@ -98,7 +99,7 @@ int aa = 0;
             while (cursor.moveToNext()) {
                 String name = cursor.getString(1);
                 String phoneNum = cursor.getString(2);
-                Toast.makeText(this, valueOf(aa), Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(this, valueOf(aa), Toast.LENGTH_SHORT).show();
                 int favor = cursor.getInt(3);
                 if(favor == 0){
                     nameList.add(name);
