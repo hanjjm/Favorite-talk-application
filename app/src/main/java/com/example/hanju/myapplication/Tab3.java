@@ -3,8 +3,10 @@ package com.example.hanju.myapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +17,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import static com.example.hanju.myapplication.MainActivity.mDbOpenHelper;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 /**
@@ -81,7 +90,7 @@ public class Tab3 extends Fragment {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 /// deleted from favorite list
-                Toast.makeText(getContext(), "A person deleted from the favorite list", Toast.LENGTH_LONG).show();
+            //    Toast.makeText(getContext(), "A person deleted from the favorite list", Toast.LENGTH_LONG).show();
                 Tab3ListAdapter.ViewHolder holder = (Tab3ListAdapter.ViewHolder) view.getTag();
 
                 //database update
@@ -100,13 +109,27 @@ public class Tab3 extends Fragment {
                 ListUpdate(listview);
             }
         });
+
+        Button camera = (Button) view.findViewById(R.id.camera);
+        camera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Favorite list 저장!", Toast.LENGTH_LONG).show();
+                View rootView = getActivity().getWindow().getDecorView();
+                File screenShot =  ScreenShot(rootView);
+                if(screenShot!=null){
+                    getActivity().sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(screenShot)));
+                }
+            }
+        });
+
         ListUpdate(listview);
 
         Button btn = (Button) view.findViewById(R.id.favoritebutton);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "~~~~~~~", Toast.LENGTH_SHORT);
+             //   Toast.makeText(getContext(), "~~~~~~~", Toast.LENGTH_SHORT);
                 Intent i = new Intent(getContext(), FavoritFriend.class);
                 startActivity(i);
             }
@@ -176,6 +199,35 @@ public class Tab3 extends Fragment {
         ListView listview = getActivity().findViewById(R.id.favoritelist);
         ListUpdate(listview);
     }
+
+    public File ScreenShot(View view) {
+        view.setDrawingCacheEnabled(true);
+
+        Bitmap screenBitmap = view.getDrawingCache();
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyyMMddHHmmss");
+
+        String formatDate = sdfNow.format(date);
+        String filename = formatDate+".png";
+        File file = new File(Environment.getExternalStorageDirectory()+"/Pictures" , filename);
+
+        FileOutputStream os = null;
+        try {
+            os = new FileOutputStream(file);
+            screenBitmap.compress(Bitmap.CompressFormat.PNG, 90, os);
+            os.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+        view.setDrawingCacheEnabled(false);
+        return file;
+    }
+
+
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
